@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Nghệ Mới Store - Store Thông Minh</title>
+    <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="https://scontent.fsgn20-1.fna.fbcdn.net/v/t1.15752-9/355494153_194475619889494_803297484899263311_n.png?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFv-yeJYY55rOhV-gQZgso6HRNJ05ELtDwdE0nTkQu0PBQa6VTL1sBKaODbJ_T4_TMNocx5LeMk-vqJpMVbc430&_nc_ohc=ABjn9LEwfGgQ7kNvwHWfkkM&_nc_oc=AdnwdGYq_MmkICl8IU067FAWqbcNMovn38qcQ_Aj11chDiz5Owz4qSPBQwSD6oNW2LNcl25k7m1wz8JUxVdzydsa&_nc_zt=23&_nc_ht=scontent.fsgn20-1.fna&oh=03_Q7cD3QEamPTT_e9NTeEBoKfs5a5V-nShXTOSgFCutfSJxSPsWQ&oe=68E28DA5" type="image/x-icon">
+    <style>
+        .voucher-circle-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            margin: 32px 0 24px 0;
+            user-select: none;
+            transition: transform 0.2s;
+        }
+        .voucher-circle-wrapper:hover .voucher-circle {
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+            transform: scale(1.07);
+        }
+        .voucher-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: voucher-bounce 2.2s infinite ease-in-out;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+        }
+        .voucher-circle img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+        .voucher-label {
+            margin-top: 14px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ff6f00;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(252,182,159,0.18);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            transition: color 0.2s;
+        }
+        .voucher-circle-wrapper:hover .voucher-label {
+            color: #e65100;
+        }
+        @keyframes voucher-bounce {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-12px);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="store-name">Công Nghệ Mới Store</h1>
+            <p class="store-description">Khám phá những sản phẩm chất lượng cao</p>
+            <div class="stats-board">
+    <div class="stat-item">
+        <span class="stat-label">🟢 Đang online:</span>
+        <span class="stat-value" id="onlineCount">200</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">🛒 Đã mua:</span>
+        <span class="stat-value" id="buyerCount">99</span>
+    </div>
+</div>
+            <!-- Nút chuyển đổi Dark Mode -->
+            <button id="darkModeToggle" class="dark-mode-toggle" title="Chuyển đổi Dark Mode">💡 Dark Mode </button>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm sản phẩm...">
+                <div class="search-icon">🔍</div>
+            </div>
+            <ul id="suggestions" class="suggestions-list"></ul>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <main class="main-content">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+
+
+                <!-- Sản phẩm bàn phím Aula F108 -->
+                <div class="product-card" data-name="Bàn Phím Aula F108 Pro">
+                    <div class="product-image">
+                        <!-- Link hình ảnh sản phẩm - thay đổi src bên dưới -->
+                        <img src="https://scontent.fsgn20-1.fna.fbcdn.net/v/t39.30808-6/542755686_122105074934998120_7853490682635628418_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF5yeMHBACShn2tqA1qbhfRYAPLu4Rr6B9gA8u7hGvoH3qr9eiZVZJwd8mC5z4jrNL5SPBUO-nSh3pPw0poH9zD&_nc_ohc=OOVwXhC7zVAQ7kNvwEAqaM5&_nc_oc=AdlxVpeNEcpmLWrH4oz1pbh5sI05aSztgGmQhQrlKp770nb_7keos82KSIdRZjdaQYvuAlG72PlucK0lnJPktsQP&_nc_zt=23&_nc_ht=scontent.fsgn20-1.fna&_nc_gid=FNRIZscgHPRXWnMQJlGB5w&oh=00_AfbNmgvIeEUBT7vrn8FufkqoR_IYE4AtWDyGrOCxEEzHXA&oe=68C0A475" alt="Bàn phím Aula F108 Pro">
+                    </div>
+                    <div class="product-info">
+                        <!-- Tên sản phẩm - chỉnh sửa tên bên dưới -->
+                        <h3 class="product-name">Bàn Phím Aula F108 Pro</h3>
+                    </div>
+                    <!-- Link affiliate - thay đổi href bên dưới -->
+                    <a href="https://s.shopee.vn/1g8yi20fiS" class="product-link" target="_blank" rel="noopener"></a>
+                </div>
+
+
+                <!-- Sản phẩm Vỏ Tai Nghe Trái Tim -->
+                <div class="product-card" data-name="Trái Tim Âm Nhạc">
+                    <div class="product-image">
+                        <!-- Link hình ảnh sản phẩm - thay đổi src bên dưới -->
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134201-7ra32-m5bve1q1mqjie1.webp" alt="Trái Tim Âm Nhạc">
+                    </div>
+                    <div class="product-info">
+                        <!-- Tên sản phẩm - chỉnh sửa tên bên dưới -->
+                        <h3 class="product-name">Trái Tim Âm Nhạc 🤪</h3>
+                    </div>
+                    <!-- Link affiliate - thay đổi href bên dưới -->
+                    <a href="https://s.shopee.vn/Vwygs5d2k" class="product-link" target="_blank" rel="noopener"></a>
+                </div>
+
+
+
+
+                <!-- Sản phẩm Đèn Mặt Trăng lơ lửng -->
+                <div class="product-card" data-name="Đèn Mặt Trăng">
+                    <div class="product-image">
+                        <!-- Link hình ảnh sản phẩm - thay đổi src bên dưới -->
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9sjizq77fpgb4@resize_w450_nl.webp" alt="Đèn Mặt Trăng lở lửng">
+                    </div>
+                    <div class="product-info">
+                        <!-- Tên sản phẩm - chỉnh sửa tên bên dưới -->
+                        <h3 class="product-name">Đèn Mặt Trăng LƠ LỬNG</h3>
+                    </div>
+                    <!-- Link affiliate - thay đổi href bên dưới -->
+                    <a href="https://s.shopee.vn/8fIjgYk7yK" class="product-link" target="_blank" rel="noopener"></a>
+                </div>
+
+              
+
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>Không tìm thấy sản phẩm nào phù hợp với từ khóa tìm kiếm.</p>
+            </div>
+        </div> <!-- Đóng .products-grid ở đây! -->
+        <div class="pagination" id="pagination"></div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Lên đầu trang">
+        ↑
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Công Nghệ Mới Store. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Voucher Free Ship góc trái bên dưới -->
+<div class="voucher-float">
+    <div class="voucher-circle-wrapper" id="voucherCircle">
+        <div class="voucher-circle">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.7KD1-yP-hKCBE-CMSa-hoQHaEK?cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Voucher Free Ship">
+        </div>
+        <div class="voucher-label">Voucher Free Ship</div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
